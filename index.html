@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css ">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <nav class="navbar custom-header">
+                <header class="container-fluid justify-content-center">
+                    <span class="navbar-brand text-white mb-0 h1">Weather Dashboard</span>
+                </header>
+            </nav>
+        </section>
+        <section class="row d-flex">
+            <aside class="col-12 col-lg-3 m-1">
+                <h3>Search for a City:</h3>
+                <input class="form-control form-control-lg" type="text" placeholder="Enter city name" aria-label=".form-control-lg example">
+                <button type="submit" class="m-2" id="search-btn">Submit</button>
+            </aside>
+            <section class="card col-12 col-lg-8 m-1">
+                <h5 class="card-header">Current Forecast</h5>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                </div>
+            </section>
+
+        </section>
+        <section class="row d-flex forcast">
+            <h4>Five Day Forecast:</h4>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="card">
+                    <div class="row">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
