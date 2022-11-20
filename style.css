@@ -2,12 +2,12 @@
     background-image: linear-gradient(to right, #8360c3, #2ebf91);
 }
 
-.forcast {
-    width: 75%;
-    display: flex;
-}   
 
-.custom-card {
-    height: 100px;
-    width: 100px;
+ul {
+    list-style-type: none;
+}
+
+
+.hidden {
+    display: none !important;
 }

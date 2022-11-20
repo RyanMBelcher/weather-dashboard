@@ -20,73 +20,79 @@
             </nav>
         </section>
         <section class="row d-flex">
-            <aside class="col-12 col-lg-3 m-1">
-                <h3>Search for a City:</h3>
-                <input class="form-control form-control-lg" type="text" placeholder="Enter city name" aria-label=".form-control-lg example">
-                <button type="submit" class="m-2" id="search-btn">Submit</button>
-            </aside>
-            <section class="card col-12 col-lg-8 m-1">
-                <h5 class="card-header">Current Forecast</h5>
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text"></p>
-                </div>
+            <section class="row d-flex col-12 col-lg-2 m-1">
+                <aside>
+                    <h3>Search for a City:</h3>
+                    <input class="form-control form-control-lg" type="text" placeholder="Enter city name" aria-label=".form-control-lg example">
+                    <button type="submit" class="m-2" id="search-btn">Submit</button>
+                </aside>
+            </section class="row d-flex">
+            <section class="row d-flex col-12 col-lg-9 m-1">
+                <section id="forecast-section" class="card col-12 col-lg-10 m-1 hidden">
+                    <h3 class="card-header">Current Forecast</h3>
+                    <div id="card-body" class="card-body">
+                        <h5 id="current-city"></h5>
+                        <h5 id="current-day" class="card-title"></h5>
+                        <ul id="weather-list"></ul>
+                    </div>
+                </section>
+                <section>
+                    <h3>Five Day Forecast: </h3>
+                    <div class="row row-cols-1 row-cols-md-5 g-4">
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
+                                        This content is a little bit longer.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a short card.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
+                                        This content is a little bit longer.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
+                                        This content is a little bit longer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </section>
-
-        </section>
-        <section class="row d-flex forcast">
-            <h4>Five Day Forecast:</h4>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="card">
-                    <div class="row">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
         </section>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+        crossorigin="anonymous"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>
