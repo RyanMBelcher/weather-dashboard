@@ -11,3 +11,16 @@ ul {
 .hidden {
     display: none !important;
 }
+
+.custom-card {
+    font-size: 90%;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.custom-title {
+    text-align: center;
+    border-bottom: 2px solid gainsboro;
+    align-items: center;
+    padding: 5px;
+}
