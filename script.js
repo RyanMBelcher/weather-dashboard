@@ -7,6 +7,7 @@ let weatherList = document.getElementById('weather-list');
 let forecastSection = document.getElementById('forecast-section');
 let currentCity = document.getElementById('current-city');
 let fiveDayList = document.getElementById('five-day-list');
+let fiveDaySection = document.getElementById('five-day-section');
 
 searchButton.addEventListener('click', fetchOnSearch);
 showCity();
@@ -42,11 +43,8 @@ function getGeoCode(callbackFunction) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             lat = data[0].lat;
             lon = data[0].lon;
-            console.log(lat)
-            console.log(lon);
 
             callbackFunction();
         })
@@ -71,6 +69,7 @@ function currentForecast() {
             windItem.textContent = ('Wind Speed: ') + data.wind.speed + (' MPH');
 
             forecastSection.classList.remove('hidden');
+            fiveDaySection.classList.remove('hidden');
             weatherList.innerHTML = '';
             weatherList.appendChild(tempItem);
             weatherList.appendChild(humidityItem);
@@ -86,43 +85,45 @@ function showDate() {
     $('#current-day').text(today.format('(MMMM D, YYYY)'));
 
     let dayOne = dayjs().add(1, 'days')
-    $('#day-one').text(dayOne.format('MM / D / YYYY'))
+    $('#day-one').text(dayOne.format('MM/D/YYYY'))
     let dayTwo = dayjs().add(2, 'days')
-    $('#day-two').text(dayTwo.format('MM / D / YYYY'))
+    $('#day-two').text(dayTwo.format('MM/D/YYYY'))
     let dayThree = dayjs().add(3, 'days')
-    $('#day-three').text(dayThree.format('MM / D / YYYY'))
+    $('#day-three').text(dayThree.format('MM/D/YYYY'))
     let dayFour = dayjs().add(4, 'days')
-    $('#day-four').text(dayFour.format('MM / D / YYYY'))
+    $('#day-four').text(dayFour.format('MM/D/YYYY'))
     let dayFive = dayjs().add(5, 'days')
-    $('#day-five').text(dayFive.format('MM / D / YYYY'))
+    $('#day-five').text(dayFive.format('MM/D/YYYY'))
 }
 
 function fiveDayForecast() {
 
     let urlTwo = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`;
 
+
     fetch(urlTwo)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
 
             // var weatherArr = data.list;
             let day = 1;
-            for (let i = 0; i < data.list.length; i += 8) {
+            for (let i = 7; i < data.list.length; i += 8) {
                 let tempItem = document.createElement('li');
                 let humidityItem = document.createElement('li');
                 let windItem = document.createElement('li');
-
-
+                let weatherIcon = document.createElement('i');
+                console.log(weatherIcon)
                 tempItem.textContent = ('Temp: ') + data.list[i].main.temp + ('° F')
                 humidityItem.textContent = ('Humidity: ') + data.list[i].main.humidity + ('%');
                 windItem.textContent = ('Wind Speed: ') + data.list[i].wind.speed + (' MPH');
 
                 const currentListItem = document.getElementById(`five-day-list-${day}`)
 
-                currentListItem.innerHTML = "";
 
+                currentListItem.innerHTML = "";
                 currentListItem.appendChild(tempItem);
                 currentListItem.appendChild(humidityItem);
                 currentListItem.appendChild(windItem);
@@ -154,7 +155,6 @@ function showCity() {
         cityListItem.appendChild(cityButton);
         const cityName = searchHistory[i];
         cityButton.textContent = cityName;
-        console.log(cityList);
         cityButton.addEventListener('click', function () { fetchOnButtonClick(cityName) });
     }
 
