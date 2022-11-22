@@ -1,5 +1,7 @@
 let APIKey = 'e919e1cf7f216e7a1fc09c0a20305ee4';
 let city;
+let lat;
+let lon;
 let searchButton = document.getElementById('search-btn');
 let weatherList = document.getElementById('weather-list');
 let forecastSection = document.getElementById('forecast-section');
@@ -10,30 +12,48 @@ searchButton.addEventListener('click', fetchOnSearch);
 showCity();
 
 function fetchOnSearch() {
+    const callback = function () {
+        currentForecast();
+        fiveDayForecast();
+        citySearch();
+        showCity();
+    }
     searchCity();
-    currentForecast();
-    fiveDayForecast();
-    citySearch()
-    showCity()
+    getGeoCode(callback);
 }
 
 function fetchOnButtonClick(cityName) {
+    const callback = function () {
+        currentForecast();
+        fiveDayForecast();
+    };
     city = cityName;
-    currentForecast();
-    fiveDayForecast();
+    getGeoCode(callback);
 }
 
 function searchCity() {
     city = document.getElementById('city-search').value;
 }
 
-function getGeoCode(city, APIKey) {
+function getGeoCode(callbackFunction) {
     let geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKey}`
+    fetch(geoURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            lat = data[0].lat;
+            lon = data[0].lon;
+            console.log(lat)
+            console.log(lon);
+
+            callbackFunction();
+        })
 }
 
 function currentForecast() {
-
-    let requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APIKey}`;
+    let requestUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`;
 
     fetch(requestUrl)
         .then(function (response) {
@@ -79,7 +99,7 @@ function showDate() {
 
 function fiveDayForecast() {
 
-    let urlTwo = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKey}`;
+    let urlTwo = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`;
 
     fetch(urlTwo)
         .then(function (response) {
@@ -113,16 +133,13 @@ function fiveDayForecast() {
         });
 }
 
-
 function citySearch() {
     let searchCity = document.getElementById('city-search').value;
-    console.log(searchCity);
     let searchHistory = JSON.parse(localStorage.getItem('city')) || [];
     if (!searchHistory.includes(searchCity)) {
         searchHistory.push(searchCity);
     }
     localStorage.setItem('city', JSON.stringify(searchHistory));
-
 }
 
 function showCity() {
