@@ -2,7 +2,7 @@
 
 ## Description
 
-This app allows a user to check the current weather in a city and also see the upcoming five day forecast. This app uses Bootstrap for much of the CSS, JavaScript, and dayJS. The weather data is using the openweathermap.org API.
+This application allows a user to check the current weather in a city and also see the upcoming five day forecast. This app uses Bootstrap for much of the CSS, JavaScript, and dayJS. The weather data is using the openweathermap.org API.
 
 ## Installation
 
