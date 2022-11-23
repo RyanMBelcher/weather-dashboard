@@ -37,7 +37,7 @@ function searchCity() {
 }
 
 function getGeoCode(callbackFunction) {
-    let geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKey}`
+    let geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKey}`
     fetch(geoURL)
         .then(function (response) {
             return response.json();
