@@ -58,15 +58,17 @@ function currentForecast() {
             return response.json();
         })
         .then(function (data) {
-
+            console.log(data);
 
             let = tempItem = document.createElement('li');
             let = humidityItem = document.createElement('li');
             let = windItem = document.createElement('li');
+            let = conditionsItem = document.createElement('li');
 
-            tempItem.textContent = ('Temp: ') + data.main.temp + ('° F')
+            tempItem.textContent = ('Temp: ') + data.main.temp + ('° F');
             humidityItem.textContent = ('Humidity: ') + data.main.humidity + ('%');
             windItem.textContent = ('Wind Speed: ') + data.wind.speed + (' MPH');
+            conditionsItem.textContent = ('Conditions: ') + data.weather[0].description;
 
             forecastSection.classList.remove('hidden');
             fiveDaySection.classList.remove('hidden');
@@ -74,6 +76,7 @@ function currentForecast() {
             weatherList.appendChild(tempItem);
             weatherList.appendChild(humidityItem);
             weatherList.appendChild(windItem);
+            weatherList.appendChild(conditionsItem);
             currentCity.textContent = data.name;
 
         }); showDate();
@@ -114,19 +117,20 @@ function fiveDayForecast() {
                 let tempItem = document.createElement('li');
                 let humidityItem = document.createElement('li');
                 let windItem = document.createElement('li');
-                let weatherIcon = document.createElement('i');
-                console.log(weatherIcon)
+                let conditionsItem = document.createElement('li');
+
                 tempItem.textContent = ('Temp: ') + data.list[i].main.temp + ('° F')
                 humidityItem.textContent = ('Humidity: ') + data.list[i].main.humidity + ('%');
                 windItem.textContent = ('Wind Speed: ') + data.list[i].wind.speed + (' MPH');
+                conditionsItem.textContent = ('Conditions: ') + data.list[i].weather[0].description;
 
                 const currentListItem = document.getElementById(`five-day-list-${day}`)
-
 
                 currentListItem.innerHTML = "";
                 currentListItem.appendChild(tempItem);
                 currentListItem.appendChild(humidityItem);
                 currentListItem.appendChild(windItem);
+                currentListItem.appendChild(conditionsItem);
                 day += 1;
 
             }
